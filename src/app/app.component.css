@@ -1,0 +1,15 @@
+/*styles applied on :host are applied on the current component, "app" in this case*/
+
+:host {
+    display: flex;
+    flex: 1;
+}
+
+/* main is mobile app approx simulation */
+main {
+    flex: 0 0 32em;;
+    height: 700px;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #343531;
+}
