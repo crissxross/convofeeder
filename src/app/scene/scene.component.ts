@@ -30,22 +30,7 @@ import { Router, ActivatedRoute } from '@angular/router';
       <pre>{{ scdata | async | json }}</pre>
     </div>
   `,
-  styles: [`
-    /* scene is a flex container */
-    :host {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      /*background-color: #3D3D32;*/
-    }
-
-    .extra {
-      color: #8e8e8e;
-      position: absolute;
-      top: 730px;
-      font-size: 0.75em;
-    }
-  `]
+  styleUrls: ['scene.component.css']
 })
 export class SceneComponent implements OnInit {
   scdata;

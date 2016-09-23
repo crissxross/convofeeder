@@ -17,25 +17,7 @@ import { Router, ActivatedRoute } from '@angular/router';
       </small> -->
     </div>
   `,
-  styles: [`
-    :host {
-      display: flex;
-      flex-direction: column;
-      /* it's a flex item */
-      flex: 1;
-      padding: 1em;
-      /*border: 1px solid #000;*/
-      color: #8e8e8e;
-    }
-
-    h5 {
-      margin-top: 0;
-      text-align: center;
-    }
-    p {
-      font-size: 0.75em;
-    }
-  `]
+  styleUrls: ['dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
   scdata;
