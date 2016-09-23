@@ -18,6 +18,7 @@ export class ScenedataService {
   getSceneData(id: number | string): Observable<any> {
     return this.http.get(this.scenedataUrl + `scene-${id}.json`)
       .map(response => response.json())
+      .do(res => console.log('CALLED getSceneData, response:', res))
       .catch(this.handleError);
   }
 

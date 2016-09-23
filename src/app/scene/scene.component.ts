@@ -1,52 +1,91 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-scene',
   template: `
-    <app-npc></app-npc>
-    <app-player></app-player>
-      <!-- more complex npc & player comps copied from conversengine -->
-        <!--
-        <app-npc
-          [npcSpeaks]="npcSpeaks"
-        >
-        </app-npc>
-        <app-player
-          [playerSpeaks]="playerSpeaks"
-          [playerThinks]="playerThinks"
-          [playerOptions]="playerOptions"
-          (selectOption)="selectOption(option)"
-          >
-        </app-player>
-      -->
+    <app-npc [npcSays]="npcSays$"></app-npc>
+    <app-player
+          [playerSays]="playerSays$"
+          [playerThinks]="playerThinks$"
+          [playerOptions]="playerOptions$"
+    ></app-player>
+      <!-- (selectOption)="selectOption(option)" for app-player ??? -->
 
     <!-- extra is only for testing -->
-    <div class="extra">
-      <p>Scene {{ (meta | async).id }} description:
-      {{ (meta | async).description }}
-      Actors: {{ (meta | async).actors }}</p>
-      <p><em>NPC says:</em> {{ (convo | async)[0].says[0][1] }}</p>
-      <pre>{{ scdata | async | json }}</pre>
-    </div>
+      <div class="extra">
+        <p>Scene {{ (meta$ | async).id }} description:
+        {{ (meta$ | async).description }}
+        Actors: {{ (meta$ | async).actors }}</p>
+        <p><em>NPC says:</em> {{ (convo$ | async)[0].says[0][1] }}</p>
+        <pre>{{ scdata$ | async | json }}</pre>
+      </div>
   `,
   styleUrls: ['scene.component.css']
 })
 export class SceneComponent implements OnInit {
-  scdata;
-  meta;
-  convo;
+  scdata$;
+  meta$;
+  convo$;
+  npcSays$;
+  playerSays$;
+  playerThinks$;
+  playerOptions$;
+  interval$ = Observable.interval(2000);
+  timer$ = Observable.timer(500, 2000);
 
   constructor(
     private route: ActivatedRoute,
     private router: Router
   ) { }
 
-  // scdata stores all of the scene data resolved by the router.
+  // scdata$ stores all of the scene data resolved by the router.
   ngOnInit() {
-    this.scdata = this.route.data;
-    this.meta = this.scdata.map(data => data.sc.meta);
-    this.convo = this.scdata.map(data => data.sc.convo);
+    this.scdata$ = this.route.data;
+    this.meta$ = this.scdata$.map(data => data.sc.meta);
+    this.convo$ = this.scdata$.map(data => data.sc.convo);
+    this.npcSays$ = this.getNpcSays();
+    this.playerSays$ = this.getPlayerSays();
+    this.playerThinks$ = this.getPlayerThinks();
+    this.playerOptions$ = this.getPlayerOptions();
+  }
+
+  getNpcSays() {
+    return this.convo$.mergeMap(convo => convo)
+      .filter(turn => turn['actor'] === 'npc')
+      .map(turn => turn['says'][0][1])
+      // .map(turn => turn['says'][0]['op'])
+      // .do(x => console.log('getNpcSays:', x))
+      .zip(this.timer$, (says, delay, period) => says);
+      // .zip(this.interval$, (says, period) => says);
+  }
+
+  getPlayerSays() {
+    return this.convo$.mergeMap(convo => convo)
+      .filter(turn => turn['actor'] === 'player')
+      .map(turn => turn['says'][0][1])
+      // .do(x => console.log('getPlayerSays:', x))
+      .zip(this.interval$, (says, period) => says)
+      .delay(2000);
+  }
+
+  getPlayerThinks() {
+    return this.convo$.mergeMap(convo => convo)
+      .filter(turn => turn['actor'] === 'player')
+      .map(turn => turn['thinks'][0][1])
+      // .do(x => console.log('getPlayerThinks:', x))
+      .zip(this.interval$, (thinks, period) => thinks)
+      .delay(500);
+  }
+
+  getPlayerOptions() {
+    return this.convo$.mergeMap(convo => convo)
+      .filter(turn => turn['actor'] === 'player')
+      .map(turn => turn['options'])
+      // .do(x => console.log('getPlayerOptions:', x))
+      .zip(this.interval$, (options, period) => options)
+      .delay(1000);
   }
 
 }
