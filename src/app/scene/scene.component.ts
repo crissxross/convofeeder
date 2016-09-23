@@ -4,18 +4,30 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-scene',
   template: `
-    <app-npc>
-    </app-npc>
-    <app-player>
-    </app-player>
+    <app-npc></app-npc>
+    <app-player></app-player>
+      <!-- more complex npc & player comps copied from conversengine -->
+        <!--
+        <app-npc
+          [npcSpeaks]="npcSpeaks"
+        >
+        </app-npc>
+        <app-player
+          [playerSpeaks]="playerSpeaks"
+          [playerThinks]="playerThinks"
+          [playerOptions]="playerOptions"
+          (selectOption)="selectOption(option)"
+          >
+        </app-player>
+      -->
 
     <!-- extra is only for testing -->
     <div class="extra">
-    <small>Scene {{ (scdata | async).sc.meta.id }} description:
-      {{ (scdata | async).sc.meta.description }}
-      Actors: {{ (scdata | async).sc.meta.actors }}
+      <p>Scene {{ (meta | async).id }} description:
+      {{ (meta | async).description }}
+      Actors: {{ (meta | async).actors }}</p>
+      <p><em>NPC says:</em> {{ (convo | async)[0].says[0][1] }}</p>
       <pre>{{ scdata | async | json }}</pre>
-      </small>
     </div>
   `,
   styles: [`
@@ -30,12 +42,15 @@ import { Router, ActivatedRoute } from '@angular/router';
     .extra {
       color: #8e8e8e;
       position: absolute;
-      top: 740px;
+      top: 730px;
+      font-size: 0.75em;
     }
   `]
 })
 export class SceneComponent implements OnInit {
   scdata;
+  meta;
+  convo;
 
   constructor(
     private route: ActivatedRoute,
@@ -45,6 +60,8 @@ export class SceneComponent implements OnInit {
   // scdata stores all of the scene data resolved by the router.
   ngOnInit() {
     this.scdata = this.route.data;
+    this.meta = this.scdata.map(data => data.sc.meta);
+    this.convo = this.scdata.map(data => data.sc.convo);
   }
 
 }

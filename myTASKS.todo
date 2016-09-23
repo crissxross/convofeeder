@@ -1,0 +1,25 @@
+TO DO - main tasks:
+
+  ☐ Implement a convofeeder service for feeding the rounds of dialogue (or interior monologue) into the scene and the appropriate actors' components.
+
+Streams of Observables:
+
+  ☐ Use Rx for the timing and scheduling of the lines of dialogue/thoughts
+
+  ☐ An observable of user-clicks of the options
+
+  ☐ *takeUntil* rx operator - a round or exchange of speech & thoughts feeds until the options appear:
+
+  ☐ so an observable of the options appearing
+
+  ☐ Each round of speech & thoughts could be one observable stream with the individual actor's lines being filtered from the stream - so:
+
+  ☐ Observables of each actor's utterances or turns - e.g.:
+    ☐ Observable from/of playerTurns
+    ☐ Observable from/of npcTurns
+
+Queries & puzzlers:
+
+  ☐ If I resolve the scene data in route/router, can I access that scene data in a service?
+
+NOTES:
