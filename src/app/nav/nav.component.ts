@@ -11,6 +11,9 @@ import { Component, OnInit } from '@angular/core';
         <li>
           <a [routerLink]="['/scene', '1']" routerLinkActive="active">Scene 1 </a>
         </li>
+        <li>
+          <a [routerLink]="['/scene', '2']" routerLinkActive="active">Scene 2 </a>
+        </li>
       </ul>
     </nav>
   `,

@@ -17,10 +17,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
               <button (click)="onChoose(option)">
                   {{ option[1] }}</button>
         </li>
-        <!-- Buttons only for TESTing CSS -->
-          <!-- <li><button>Test option 1 optimal op?</button></li>
-          <li><button>Option 2 overkill vk?</button></li>
-          <li><button>Test option 3 under-par un? Is option 3 under-par un?</button></li> -->
       </ul>
     </div>
   `,

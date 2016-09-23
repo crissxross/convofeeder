@@ -2,7 +2,7 @@
   "scenedata": {
     "meta": {
       "id": "1",
-      "description": "Test convo-dialogue.",
+      "description": "SCENE ONE test convo-dialogue.",
       "actors": ["npc", "player"],
       "location": "default location"
     },
