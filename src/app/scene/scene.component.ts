@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import '../rxjs-operators';
+
+// QUERY - how do I clear convo text from view when click to a different scene? ???
 
 @Component({
   selector: 'app-scene',
@@ -18,7 +21,7 @@ import { Observable } from 'rxjs/Observable';
         <p>Scene {{ (meta$ | async).id }} description:
         {{ (meta$ | async).description }}
         Actors: {{ (meta$ | async).actors }}</p>
-        <p><em>NPC says:</em> {{ (convo$ | async)[0].says[0][1] }}</p>
+        <p><em>FEED:</em> {{ (convofeed$ | async) }}</p>
         <pre>{{ scdata$ | async | json }}</pre>
       </div>
   `,
@@ -34,6 +37,7 @@ export class SceneComponent implements OnInit {
   playerOptions$;
   interval$ = Observable.interval(2000);
   timer$ = Observable.timer(500, 2000);
+  convofeed$;
 
   constructor(
     private route: ActivatedRoute,
@@ -49,7 +53,17 @@ export class SceneComponent implements OnInit {
     this.playerSays$ = this.getPlayerSays();
     this.playerThinks$ = this.getPlayerThinks();
     this.playerOptions$ = this.getPlayerOptions();
+
+// convofeed$ is NOT right but it's interesting
+    this.convofeed$ = Observable.merge(
+      this.npcSays$,
+      this.playerThinks$,
+      this.playerOptions$,
+      this.playerSays$
+    ).zip(this.interval$, (feed, period) => feed);
   }
+
+  // Do I need a shared timing/scheduling observable that all the convo feeds use ???
 
   getNpcSays() {
     return this.convo$.mergeMap(convo => convo)

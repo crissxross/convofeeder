@@ -20,6 +20,10 @@ Streams of Observables:
 
 Queries & puzzlers:
 
+  ☐ ANIMATION - can I use animation to schedule the convo feed? Could I use the ANIMATION CALLBACKS - could I have an observable of animationStarted($event) and animationDone($event) events and use observable to schedule the convo feeds turn by turn?
+
+  ☐ CUSTOM EVENTS using EventEmitter class - maybe I should create custome events for each feed and/or turn in the conversation - then create an OBSERVABLE from those custom events which will schedule the flow and exchanbe of convo feeds ???
+
   ☐ If I resolve the scene data in route/router, can I access that scene data in a service?
 
 NOTES:
