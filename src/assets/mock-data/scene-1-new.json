@@ -1,0 +1,134 @@
+{
+  "scenedata": {
+    "meta": {
+      "id": "1",
+      "description": "SCENE ONE *new structure* for test convo-dialogue.",
+      "actors": ["npc", "player"],
+      "location": "default location"
+    },
+    "convo": [
+      {
+        "actor": "npc",
+        "says": [
+          ["OP", "1N-says NPC's first speech in scene 2 *OP"],
+          ["VK", "1N-says NPC's first speech in scene 2 *VK"],
+          ["UN", "1N-says NPC's first speech in scene 2 *UN"]
+        ]
+      },
+      {
+        "actor": "player",
+        "thinks": [
+          ["OP", "p1 thinks a first thought in scene 2 *OP"],
+          ["VK", "p1 thinks a first thought in scene 2 *VK"],
+          ["UN", "p1 thinks a first thought in scene 2 *UN"]
+        ]
+      },
+      {
+        "actor": "player",
+        "options": [
+          ["OP", "option 1 for P1 in scene 2 *OP"],
+          ["UN", "option for P1 in scene 2 *UN"]
+        ]
+      },
+      {
+        "actor": "player",
+        "says": [
+          ["OP", "1P-says player's first speech in scene 2 *OP"],
+          ["UN", "1P-says player's first speech in scene 2 *UN"]
+        ]
+      },
+      {
+        "actor": "npc",
+        "says": [
+          ["OP", "2N-says NPC's second speech in scene 2 *OP"],
+          ["UN", "2N-says NPC's second speech in scene 2 *UN"]
+        ]
+      },
+      {
+        "actor": "player",
+        "thinks": [
+          ["OP", "p2 thinks a second thought in scene 2 *OP"],
+          ["UN", "p2 thinks a second thought in scene 2 *UN"]
+        ]
+      },
+      {
+        "actor": "player",
+        "options": [
+          ["OP", "option 1 for P2 in scene 2 *OP"],
+          ["VK", "option 2 for P2 in scene 2 *VK"],
+          ["UN", "option 3 for P2 in scene 2 *UN"]
+        ]
+      },
+      {
+        "actor": "player",
+        "says": [
+          ["OP", "2P-says player's second speech in scene 2 *OP"],
+          ["VK", "2P-says player's second speech in scene 2 *VK"],
+          ["UN", "2P-says player's second speech in scene 2 *UN"]
+        ]
+      },
+      {
+        "actor": "npc",
+        "says": [
+          ["OP", "3N-says NPC's third speech in scene 2 *OP"],
+          ["VK", "3N-says NPC's third speech in scene 2 *VK"],
+          ["UN", "3N-says NPC's third speech in scene 2 *UN"]
+        ]
+      },
+      {
+        "actor": "player",
+        "thinks": [
+          ["OP", "p3 thinks a third thought in scene 2 *OP"],
+          ["VK", "p3 thinks a third thought in scene 2 *VK"],
+          ["UN", "p3 thinks a third thought in scene 2 *UN"]
+        ]
+      },
+      {
+        "actor": "player",
+        "options": [
+          ["OP", "option 1 for P3 in scene 2 *OP"],
+          ["VK", "option 2 for P3 in scene 2 *VK"],
+          ["UN", "a 3rd option for P3 in scene 2 *UN"]
+        ]
+      },
+      {
+        "actor": "player",
+        "says": [
+          ["OP", "3P-says player's third speech in scene 2 *OP"],
+          ["VK", "3P-says player's third speech in scene 2 *VK"],
+          ["UN", "3P-says player's third speech in scene 2 *UN"]
+        ]
+      },
+      {
+        "actor": "npc",
+        "says": [
+          ["OP", "4N-says NPC's fourth speech in scene 2 *OP"],
+          ["VK", "4N-says NPC's fourth speech in scene 2 *VK"],
+          ["UN", "4N-says NPC's fourth speech in scene 2 *UN"]
+        ]
+      },
+      {
+        "actor": "player",
+        "thinks": [
+          ["OP", "p4 thinks a fourth thought in scene 2 *OP"],
+          ["VK", "p4 thinks a fourth thought in scene 2 *VK"],
+          ["UN", "p4 thinks a fourth thought in scene 2 *UN"]
+        ]
+      },
+      {
+        "actor": "player",
+        "options": [
+          ["OP", "option 1 for P4 in scene 2 *OP"],
+          ["VK", "option 2 for P4 in scene 2 *VK"]
+        ]
+      },
+      {
+        "actor": "player",
+        "says": [
+          ["OP", "4P-says player's fourth speech in scene 2 *OP"],
+          ["VK", "4P-says player's fourth speech in scene 2 *VK"]
+        ]
+      }
+    ]
+  }
+}

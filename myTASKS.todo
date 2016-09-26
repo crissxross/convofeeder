@@ -2,6 +2,14 @@ TO DO - main tasks:
 
   ☐ Implement a convofeeder service for feeding the rounds of dialogue (or interior monologue) into the scene and the appropriate actors' components.
 
+  ☐ Change my data structure so that (player) OPTIONS are not nested inside the player object. See Evernote
+
+  ☐ create OP/VK/UN string values as constants like ACTIONS in ngrx (maybe they'll perform as actions too at some point?) and use these in scene-#.json files. Like so:
+
+  export const OP = 'OP';
+  export const VK = 'VK';
+  export const UN = 'UN';
+
 Streams of Observables:
 
   ☐ Use Rx for the timing and scheduling of the lines of dialogue/thoughts
@@ -24,6 +32,6 @@ Queries & puzzlers:
 
   ☐ CUSTOM EVENTS using EventEmitter class - maybe I should create custome events for each feed and/or turn in the conversation - then create an OBSERVABLE from those custom events which will schedule the flow and exchanbe of convo feeds ???
 
-  ☐ If I resolve the scene data in route/router, can I access that scene data in a service?
+  ☐ If I resolve the scene data in route/router, can I access that scene data in a service? But is it necessary to do this?
 
 NOTES:

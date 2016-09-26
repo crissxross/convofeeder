@@ -24,7 +24,7 @@
         ],
         "options": [
           ["op", "option 1 for P1 in scene 2 *OP"],
-          ["un", "option 3 for P1 in scene 2 *UN"]
+          ["un", "option for P1 in scene 2 *UN"]
         ],
         "says": [
           ["op", "1P-says player's first speech in scene 2 *OP"],
