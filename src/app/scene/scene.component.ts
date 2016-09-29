@@ -18,8 +18,8 @@ import '../rxjs-operators';
 
     <!-- extra is only for testing -->
       <div class="extra">
-        <h3><em>FEED...</em> {{ (convofeed$ | async | json) }}</h3>
-        <h3><em>SIMPLE FEED...</em> {{ (simplefeed$ | async) }}</h3>
+        <h3><em>convoFEED...</em> {{ (convofeed$ | async | json) }}</h3>
+        <!-- <h3><em>SIMPLE FEED...</em> {{ (simplefeed$ | async) }}</h3> -->
         <p>Scene {{ (meta$ | async).id }} description:
         {{ (meta$ | async).description }}
         Actors: {{ (meta$ | async).actors }}</p>
@@ -56,16 +56,16 @@ export class SceneComponent implements OnInit {
     // this.playerThinks$ = this.getPlayerThinks(); // TEMP
     // this.playerOptions$ = this.getPlayerOptions(); // TEMP
 
-    this.startSimpleFeed();
+    // this.startSimpleFeed();
     this.startFeed();
   }
 
-  startSimpleFeed() {
-    return this.simplefeed$ = this.convo$.mergeMap(convo => convo)
-      .map(turn => turn['says'][0][1])
-      .zip(this.timer$, (feed, delay, period) => feed);
-      // .zip(this.interval$, (feed, period) => feed);
-  }
+  // startSimpleFeed() {
+  //   return this.simplefeed$ = this.convo$.mergeMap(convo => convo)
+  //     .filter(turn => turn['says'])
+  //     .map(turn => turn['says'][0][1])
+  //     .zip(this.timer$, (feed, delay, period) => feed);
+  // }
 
   startFeed() {
     return this.convofeed$ = this.convo$.mergeMap(convo => convo)
@@ -76,24 +76,28 @@ export class SceneComponent implements OnInit {
       // .zip(this.interval$, (feed, period) => feed);
   }
 
-  // I THINK I might need to use switchMap ???
+  // using imperative style code (if/else) might be a bit of a code smell - see myTASK notes.
 
   sortFeed(turn) { // EXPERIMENTAL, NOT the way
     if (turn.actor === 'player') {
-      console.log(`actor is player`);
+      // console.log(`actor is player`);
       if (turn.thinks) {
+        console.log(`player thinks`);
         this.playerThinks$ = this.getPlayerThinks();
       }
       if (turn.options) {
+        console.log(`player options`);
         this.playerOptions$ = this.getPlayerOptions();
       }
       if (turn.says) {
+        console.log(`player says`);
         this.playerSays$ = this.getPlayerSays();
       }
       return turn;
     } else if (turn.actor === 'npc') {
-      console.log(`actor is npc`);
+      // console.log(`actor is npc`);
       this.npcSays$ = this.getNpcSays();
+      console.log(`npc says`);
       return turn;
     }
   }

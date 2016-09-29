@@ -34,4 +34,10 @@ Queries & puzzlers:
 
   ☐ If I resolve the scene data in route/router, can I access that scene data in a service? But is it necessary to do this?
 
+  ☐ JSON SCENE DATA - should my convo data be (almost) entirely a structure of nested arrays rather than mainly an array of objects?
+
 NOTES:
+
+QUOTE (from RxJS in Action book, p. 138):
+
+FUNCTIONAL VS IMPERATIVE Generally speaking, most of the cases involving using structures like for/of or if/else can be satisfied by using RxJS operators like filter, map, reduce, take, first, last, and others; in other words, most of the complex tasks for which you need to implement loops and branches are just instances of a certain combination of these operators. A familiar example of this is an array. Most uses for/of and if/else statements can be supplanted by a combination of map and filter.
