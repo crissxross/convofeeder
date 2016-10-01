@@ -2,7 +2,7 @@ TO DO - main tasks:
 
   ☐ Implement a convofeeder service for feeding the rounds of dialogue (or interior monologue) into the scene and the appropriate actors' components.
 
-  ☐ Change my data structure so that (player) OPTIONS are not nested inside the player object. See Evernote
+  ✔ Change my data structure so that (player) OPTIONS are not nested inside the player object. See Evernote @done (9/29/2016, 3:05:00 PM)
 
   ☐ create OP/VK/UN string values as constants like ACTIONS in ngrx (maybe they'll perform as actions too at some point?) and use these in scene-#.json files. Like so:
 

@@ -4,16 +4,22 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   selector: 'app-player',
   template: `
     <div class="player-speaks">
-      <p>{{ playerSays | async }}</p>
+      <!-- <p>{{ playerSays | async }}</p> -->
+      <p>{{ playerSays }}</p>
     </div>
 
     <div class="thinks">
-      <p>{{ playerThinks | async }}</p>
+      <!-- <p>{{ playerThinks | async }}</p> -->
+      <p>{{ playerThinks }}</p>
     </div>
 
     <div class="options">
       <ul>
-        <li *ngFor="let option of playerOptions | async">
+        <!-- <li *ngFor="let option of playerOptions | async">
+              <button (click)="onChoose(option)">
+                  {{ option[1] }}</button>
+        </li> -->
+        <li *ngFor="let option of playerOptions">
               <button (click)="onChoose(option)">
                   {{ option[1] }}</button>
         </li>

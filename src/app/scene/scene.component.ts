@@ -18,8 +18,9 @@ import '../rxjs-operators';
 
     <!-- extra is only for testing -->
       <div class="extra">
-        <h3><em>convoFEED...</em> {{ (convofeed$ | async | json) }}</h3>
-        <!-- <h3><em>SIMPLE FEED...</em> {{ (simplefeed$ | async) }}</h3> -->
+        <!-- <h3><em>convoFEED...</em> {{ (convofeed$ | async | json) }}</h3> -->
+        <p><em>SIMPLE FEED...</em></p>
+        <p class="big">{{ (simplefeed$) }}</p>
         <p>Scene {{ (meta$ | async).id }} description:
         {{ (meta$ | async).description }}
         Actors: {{ (meta$ | async).actors }}</p>
@@ -56,18 +57,37 @@ export class SceneComponent implements OnInit {
     // this.playerThinks$ = this.getPlayerThinks(); // TEMP
     // this.playerOptions$ = this.getPlayerOptions(); // TEMP
 
-    // this.startSimpleFeed();
-    this.startFeed();
+    this.startSimpleFeed();
+    // this.startFeed();
+    this.simplefeed$ = 'simple test message';
   }
 
-  // startSimpleFeed() {
-  //   return this.simplefeed$ = this.convo$.mergeMap(convo => convo)
-  //     .filter(turn => turn['says'])
-  //     .map(turn => turn['says'][0][1])
-  //     .zip(this.timer$, (feed, delay, period) => feed);
-  // }
+  startSimpleFeed() {
+    return this.simplefeed$ = this.convo$.mergeMap(convo => convo)
+      // .filter(turn => turn['says'])
+      // .map(turn => turn['says'][0][1])
+      .zip(this.timer$, (feed, delay, period) => feed)
+      .subscribe(this.allocateFeeds);
+  }
 
-  startFeed() {
+  allocateFeeds(turns) {
+    // do this inside subscribe function - allocate the utterances to appropriate place
+    if (turns.actor === 'npc') {
+      console.log('npc -', turns.actor + ' ' + turns.says[0][1]);
+      return this.npcSays$ = turns.says[0][1]; // why doesn't this work ?????
+    }
+    if (turns.actor === 'player' && turns.says) {
+      console.log('player -', turns.actor +' '+ turns.says[0][1]);
+    }
+    if (turns.actor === 'player' && turns.thinks) {
+      console.log('player -', turns.actor +' '+ turns.thinks[0][1]);
+    }
+    if (turns.actor === 'player' && turns.options) {
+      console.log('player -', turns.actor +' '+ turns.options[0][1]);
+    }
+  }
+
+    startFeed() {
     return this.convofeed$ = this.convo$.mergeMap(convo => convo)
       .zip(this.timer$, (feed, delay, period) => feed)
       .map(turn => this.sortFeed(turn)) // a side effect ???
