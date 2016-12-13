@@ -2,7 +2,7 @@
 
 *WIP* - An experiment in feeding lines of dialogue (or interior monologue) using Rx observables in Angular 2... *everything's a stream...*
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.19.
+This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.22-1
 
 ## Development server
 
