@@ -10,6 +10,10 @@ TO DO - main tasks:
   export const VK = 'VK';
   export const UN = 'UN';
 
+FIX:
+  ☐ FIX the errors resulting after update to cli & angular 2.4.1:
+    * To see what they are run ng serve
+
 Streams of Observables:
 
   ☐ Use Rx for the timing and scheduling of the lines of dialogue/thoughts
